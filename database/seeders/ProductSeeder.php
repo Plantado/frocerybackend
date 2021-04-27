@@ -15,19 +15,27 @@ class ProductSeeder extends Seeder
     public function run()
     {
         Product::create([
-            "name" => "CocaCola 1.5 liter",
-            "price" => 80.00,
-            "category" => "drinks",
-            "description" => "a cold drink for a hot day",
-            "imageUrl" => "https://www.pngjoy.com/fullpng/y7j1u7z9q5t4d6/"
+            "name" => "Alaska Condensed",
+            "image" => "/images/alaska.jpg",
+            "brand" => "Alaska",
+            "category" => "Canned Goods",
+            "description" => "4.43L",
+            "price" => 75.00,
+            "countInStock" => 37,
+            "rating" => 3.5,
+            "numReviews" => 3.5
         ]);
 
         Product::create([
-            "name" => "Sprite 1.5 liter",
-            "price" => 80.00,
-            "category" => "drinks",
-            "description" => "a cold drink for a hot day",
-            "imageUrl" => "https://ipcdn.freshop.com/resize?url=https://images.freshop.com/1564405684702543772/fdba22ce91f34b3d56a123668f00a862_large.png&width=512&type=webp&quality=40"
+            "name" => "Cereal",
+            "image" => "/images/cereal.jpg",
+            "brand" => "No Brand",
+            "category" => "Breakfast",
+            "description" => "198g",
+            "price" => 249.00,
+            "countInStock" => 37,
+            "rating" => 4.1,
+            "numReviews" => 4.1
         ]);
     }
 }

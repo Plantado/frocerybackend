@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Procduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -38,25 +38,25 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // Validation
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'category' => 'required',
-            'imageUrl' => 'required,'
+        // $request->validate([
+        //     'name' => 'required',
+        //     'price' => 'required',
+        //     'category' => 'required',
+        //     'imageUrl' => 'required,'
 
-        ]);
+        // ]);
 
-        $product = Product::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'category' => $request->category,
-            'imageUrl' => $request->imageUrl,
-            'description' => $request->description
-        ]);
+        // $product = Product::create([
+        //     'name' => $request->name,
+        //     'price' => $request->price,
+        //     'category' => $request->category,
+        //     'imageUrl' => $request->imageUrl,
+        //     'description' => $request->description
+        // ]);
 
 
-        //return response
-        return response()->json($product);
+        // //return response
+        // return response()->json($product);
     }
 
     /**
@@ -94,26 +94,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-         // Validation
-         $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'category' => 'required',
-            'imageUrl' => 'required,'
+        // // Validation
+        // $request->validate([
+        //     'name' => 'required',
+        //     'price' => 'required',
+        //     'category' => 'required',
+        //     'imageUrl' => 'required,'
 
-        ]);
+        // ]);
 
-        $product->update([
-            'name' => $request->name,
-            'price' => $request->price,
-            'category' => $request->category,
-            'imageUrl' => $request->imageUrl,
-            'description' => $request->description
-        ]);
+        // $product->update([
+        //     'name' => $request->name,
+        //     'price' => $request->price,
+        //     'category' => $request->category,
+        //     'imageUrl' => $request->imageUrl,
+        //     'description' => $request->description
+        // ]);
 
 
-        //return response
-        return response()->json($product);
+        // //return response
+        // return response()->json($product);
     }
 
     /**
@@ -124,7 +124,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product->delete();
-        return response()->json($product);
+        // $product->delete();
+        // return response()->json($product);
     }
 }
