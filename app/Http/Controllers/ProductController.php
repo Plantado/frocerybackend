@@ -38,25 +38,22 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // Validation
-        // $request->validate([
-        //     'name' => 'required',
-        //     'price' => 'required',
-        //     'category' => 'required',
-        //     'imageUrl' => 'required,'
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required',
+            'brand' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'countInStock' => 'required',
+            'rating' => 'required',
+            'numReviews' => 'required'
+        ]);
 
-        // ]);
+        $product = Product::create($request->all());
 
-        // $product = Product::create([
-        //     'name' => $request->name,
-        //     'price' => $request->price,
-        //     'category' => $request->category,
-        //     'imageUrl' => $request->imageUrl,
-        //     'description' => $request->description
-        // ]);
-
-
-        // //return response
-        // return response()->json($product);
+        //return response
+        return response()->json($product);
     }
 
     /**
@@ -67,8 +64,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //sample code
-        //return view('Post.show', compact('post'));
+        $product = Product::find($id);
+        return response()->json($product);
     }
 
     /**
@@ -77,11 +74,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         //sample code
         //$post = Post::find($id);
         //return view('Post.edit', compact('post'));
+
 
     }
 
@@ -92,28 +90,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        // // Validation
-        // $request->validate([
-        //     'name' => 'required',
-        //     'price' => 'required',
-        //     'category' => 'required',
-        //     'imageUrl' => 'required,'
+        $product = Product::find($id);
+        $product->update($request->all());
+        return $product;
 
-        // ]);
-
-        // $product->update([
-        //     'name' => $request->name,
-        //     'price' => $request->price,
-        //     'category' => $request->category,
-        //     'imageUrl' => $request->imageUrl,
-        //     'description' => $request->description
-        // ]);
-
-
-        // //return response
-        // return response()->json($product);
+        //return response
+        return response()->json($product);
     }
 
     /**
@@ -124,7 +108,18 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        // $product->delete();
-        // return response()->json($product);
+        $product = Product::destroy($id);
+        return response()->json($product);
+    }
+    /**
+     * Search for a name
+     *
+     * @param  str  $name
+     * @return \Illuminate\Http\Response
+     */
+    public function search($name)
+    {
+        $product = Product::where('name', 'like', '%' . $name . '%')->get();
+        return response()->json($product);
     }
 }
